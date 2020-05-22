@@ -97,8 +97,11 @@ prompt_git() {
   () {
     local LC_ALL="" LC_CTYPE="en_US.UTF-8"
     # PL_BRANCH_CHAR=$'\ue0a0'  # 
-    # PL_BRANCH_CHAR=$'\u03A5'  # ϒ
-    PL_BRANCH_CHAR=$'\u2325'  # ⌥
+    # if $(system_profiler SPFontsDataType > /dev/null 2>&1 | grep -q 'Family: Meslo LG L DZ for Powerline'); then
+      PL_BRANCH_CHAR=$'\ue0a0' # 
+    # else 
+    #   PL_BRANCH_CHAR=$'\u2325' # ⌥
+    # fi
   }
   local ref dirty mode repo_path
   repo_path=$(git rev-parse --git-dir 2>/dev/null)
